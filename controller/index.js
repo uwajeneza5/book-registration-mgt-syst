@@ -1,16 +1,14 @@
-onst {addBook,update,remove,findById,display} = require("./controller/bookController");
-
-// const{add}=booksDatabase;
+const {addBook,update,remove,findById,display} = require('../controller/bookcontroller');
 
 var added={
-    title:"My Possessive Deal",
-    author:"mochacapri",
-    year:2023
+    title:"eat that frogs",
+    author:"toyata",
+    year:2022
 };
 
 addBook(added);
 
-update(2,'year',2005);
+update(3,'year',2054);
 remove(4);
 findById(1);
 display();

@@ -1,31 +1,78 @@
-const{booksDatabase}= require ('../database/db');
-const newbooks= (id,key) => {
-      const booksDatabase= find (ele.id===newbooksv.id);
-    booksDatabase.push(newbooks.length+1);
-    console.log("\nAdded");
+const {booksDatabase} = require("../database/db")
+
+
+//Adding  book
+
+const addBook=(book)=>{
+    book.id=booksDatabase.length+1;
+    booksDatabase.push(book);
     console.log(booksDatabase);
-};
-const update = (id,key,value) => {
-    const {exists} = booksDatabase.findIndex((book) => book.id === newbooks.id);
-    booksDatabase[exists] = newbooks;
-    console.log("\nUpdated");
-    console.log(booksDatabase);
-    if(!exists){
-        console.log(notfound);
+
+}
+
+
+
+//update  book
+
+const update=(id,key,value)=>{
+    
+    var exists = booksDatabase.find(element => element.id === id);
+    console.log(exists);
+
+    if (!exists) {
+        console.log("\n not Found\n");
+        console.log(booksDatabase);
     }
     else{
-        console.log(updated);
+        exists[key]=value;
+        console.log("\n  updated\n");
+        console.log(exists);
+    }
+}
+
+//remove
+
+const remove=(id)=>{
+    console.log("\n2.FUNCTION TO REMOVE A  BOOK IN THE DB----------------------------------------------------------------\n");
+   var exists=booksDatabase.find(ele=>ele.id==id);
+   if (!exists) {
+    console.log(" not found");
+   }
+   else{
+    var index=booksDatabase.indexOf(exists);
+    booksDatabase.splice(index,1);
+    console.log("Book  removed\n");
+    console.log("Book display:\n");
+    console.log(booksDatabase);
+   }
+
+};
+
+//find abook 
+
+const findById=(id)=>{
+    let foundbook = {};
+    foundbook = booksDatabase.find(ele=>ele.id===id);
+    if (!foundbook) {
+        console.log("\n  not Found\n");
+    }
+    else{
+        console.log("\nFound :\n");
+        console.log(foundbook);
     }
     
-};
-const dispayall= (newbooks) => {
-    console.log(booksDatabase);
-};
-const remove = (id) => {
-    const exists = booksDatabase.filter((book) => book.id === newbooks.id);
-    console.log("\nRemoved");
-    console.log(booksDatabase);
-};
+}
 
+//Display Book
 
-module.exports = {add ,};
+const display=()=>{
+    console.log("\n  the Library\n")
+    console.log(booksDatabase);
+}
+module.exports={
+    addBook,
+    update,
+    remove,
+    findById,
+    display
+}
