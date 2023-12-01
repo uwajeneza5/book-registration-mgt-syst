@@ -33,7 +33,7 @@ const update=(id,key,value)=>{
 //remove
 
 const remove=(id)=>{
-    console.log("\n2.FUNCTION TO REMOVE A  BOOK IN THE DB----------------------------------------------------------------\n");
+    console.log("\n2functions);
    var exists=booksDatabase.find(ele=>ele.id==id);
    if (!exists) {
     console.log(" not found");
